@@ -1,0 +1,26 @@
+server:
+  port: 8086
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers:
+        - localhost:9092
+      group-id: pg
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: com.pg.owner.entity
+  mail:
+    host: in-v3.mailjet.com
+    port: 587
+    username: ${API_KEY}
+    password: ${API_SECRET}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
